@@ -74,25 +74,25 @@ public class Kotik {
         return meow;
     }
 
-    void eat() {
-        eat(chooseFullness(), chooseFood());
+    private void eat() {
+        eat(eat(chooseFullness()), chooseFood());
     }
 
-    void eat(int fullness) {
+    private int eat(int fullness) {
         this.fullness += fullness;
-        System.out.println(name + "'s fullness is increasing by " + fullness);
+        return this.fullness;
     }
 
-    void eat(int fullness, String food) {
+    private void eat(int fullness, String food) {
         this.fullness += fullness;
         this.food = food;
-        System.out.println(name + " is eating " + food);
+        System.out.println(name + " is eating " + this.food);
     }
 
     private String chooseFood() {
         String[] food = {"fish.", "meat.", "Sheba.", "cucumber.", "my ciabatta which I bought for MY OWN DINNER!!"};
         int i = (int) (Math.random() * food.length);
-        return food[i];
+        return this.food = food[i];
     }
 
     private int chooseFullness() {
@@ -126,7 +126,6 @@ public class Kotik {
     }
 
     public void liveAnotherDay() {
-
         if (weightCheck == 0) {
             for (int i = 0; i < 24; i++) {
                 int random = (int) (Math.random() * 5 + 1);
