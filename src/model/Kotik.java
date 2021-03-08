@@ -80,6 +80,7 @@ public class Kotik {
 
     void eat(int fullness) {
         this.fullness += fullness;
+        System.out.println(name + "'s fullness is increasing by " + fullness);
     }
 
     void eat(int fullness, String food) {
@@ -98,64 +99,30 @@ public class Kotik {
         return (int) (Math.random() * 5 + 2);
     }
 
+    private void hungry() {
+        System.out.print(name + " is hungry. Again. ");
+        eat();
+    }
+
+
     private boolean playWithFood() {
-        if (fullness > 0) {
-            System.out.println(name + " is playing with " + chooseFood() + " Which one he used to eat!");
-            fullness--;
-            return true;
-        } else {
-            System.out.print(name + " is hungry. Again. ");
-            eat();
-            return false;
-        }
+        return fullness > 0;
     }
 
     private boolean stareOutOfAWindow() {
-        if (fullness > 0) {
-            System.out.println(name + " is staring out of a window for hours...");
-            fullness--;
-            return true;
-        } else {
-            System.out.print(name + " is hungry. Again. ");
-            eat();
-            return false;
-        }
+        return fullness > 0;
     }
 
     private boolean ruinFurniture() {
-        if (fullness > 0) {
-            System.out.println(name + " is ruining my new leather couch!");
-            fullness -= 3;
-            return true;
-        } else {
-            System.out.print(name + " is hungry. Again. ");
-            eat();
-            return false;
-        }
+        return fullness > 0;
     }
 
     private boolean violentlyMeowing() {
-        if (fullness > 0) {
-            System.out.println(name + " is meowing violently for hours!");
-            fullness -= 2;
-            return true;
-        } else {
-            System.out.print(name + " is hungry. Again. ");
-            eat();
-            return false;
-        }
+        return fullness > 0;
     }
 
     private boolean sleepOnSomeonesKneesSoThePersonCantWalk() {
-        if (fullness > 0) {
-            System.out.println(name + " is sleeping on my knees and i can't feel my legs. Again.");
-            fullness--;
-            return true;
-        } else {
-            System.out.print(name + " is hungry. Again. ");
-            eat();
-            return false;
-        }
+        return fullness > 0;
     }
 
     public void liveAnotherDay() {
@@ -165,20 +132,46 @@ public class Kotik {
                 int random = (int) (Math.random() * 5 + 1);
                 switch (random) {
                     case 1:
-                        playWithFood();
+                        if (playWithFood()) {
+                            System.out.println(name + " is playing with " + chooseFood() + " Which one he used to eat!");
+                            fullness--;
+                        } else {
+                            hungry();
+                        }
                         break;
                     case 2:
-                        stareOutOfAWindow();
+                        if (stareOutOfAWindow()) {
+                            System.out.println(name + " is staring out of a window for hours...");
+                            fullness--;
+                        } else {
+                            hungry();
+                        }
                         break;
                     case 3:
-                        ruinFurniture();
+                        if (ruinFurniture()) {
+                            System.out.println(name + " is ruining my new leather couch!");
+                            fullness -= 3;
+                        } else {
+                            hungry();
+                        }
                         break;
                     case 4:
-                        violentlyMeowing();
+                        if (violentlyMeowing()) {
+                            System.out.println(name + " is meowing violently for hours!");
+                            fullness -= 2;
+                        } else {
+                            hungry();
+                        }
                         break;
-                    case 5:
-                        sleepOnSomeonesKneesSoThePersonCantWalk();
+                    case 5: {
+                        if (sleepOnSomeonesKneesSoThePersonCantWalk()) {
+                            System.out.println(name + " is sleeping on my knees and i can't feel my legs. Again.");
+                            fullness--;
+                        } else {
+                            hungry();
+                        }
                         break;
+                    }
                 }
             }
         }
