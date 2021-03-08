@@ -98,7 +98,7 @@ public class Kotik {
         return (int) (Math.random() * 5 + 2);
     }
 
-    boolean playWithFood() {
+    private boolean playWithFood() {
         if (fullness > 0) {
             System.out.println(name + " is playing with " + chooseFood() + " Which one he used to eat!");
             fullness--;
@@ -110,7 +110,7 @@ public class Kotik {
         }
     }
 
-    boolean stareOutOfAWindow() {
+    private boolean stareOutOfAWindow() {
         if (fullness > 0) {
             System.out.println(name + " is staring out of a window for hours...");
             fullness--;
@@ -122,7 +122,7 @@ public class Kotik {
         }
     }
 
-    boolean ruinFurniture() {
+    private boolean ruinFurniture() {
         if (fullness > 0) {
             System.out.println(name + " is ruining my new leather couch!");
             fullness -= 3;
@@ -134,7 +134,7 @@ public class Kotik {
         }
     }
 
-    boolean violentlyMeowing() {
+    private boolean violentlyMeowing() {
         if (fullness > 0) {
             System.out.println(name + " is meowing violently for hours!");
             fullness -= 2;
@@ -146,7 +146,7 @@ public class Kotik {
         }
     }
 
-    boolean sleepOnSomeonesKneesSoThePersonCantWalk() {
+    private boolean sleepOnSomeonesKneesSoThePersonCantWalk() {
         if (fullness > 0) {
             System.out.println(name + " is sleeping on my knees and i can't feel my legs. Again.");
             fullness--;
@@ -164,11 +164,21 @@ public class Kotik {
             for (int i = 0; i < 24; i++) {
                 int random = (int) (Math.random() * 5 + 1);
                 switch (random) {
-                    case 1 -> playWithFood();
-                    case 2 -> stareOutOfAWindow();
-                    case 3 -> ruinFurniture();
-                    case 4 -> violentlyMeowing();
-                    case 5 -> sleepOnSomeonesKneesSoThePersonCantWalk();
+                    case 1:
+                        playWithFood();
+                        break;
+                    case 2:
+                        stareOutOfAWindow();
+                        break;
+                    case 3:
+                        ruinFurniture();
+                        break;
+                    case 4:
+                        violentlyMeowing();
+                        break;
+                    case 5:
+                        sleepOnSomeonesKneesSoThePersonCantWalk();
+                        break;
                 }
             }
         }
